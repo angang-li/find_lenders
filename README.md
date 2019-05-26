@@ -6,7 +6,7 @@
   - [3. File Descriptions](#3-file-descriptions)
   - [4. Instructions to run the web application](#4-instructions-to-run-the-web-application)
   - [5. Python version and libraries](#5-python-version-and-libraries)
-  - [6. Results and screen shots](#6-results-and-screen-shots)
+  - [6. Results and screenshots](#6-results-and-screenshots)
 
 ## 1. Background
 
@@ -15,7 +15,7 @@ This project uses data of real estate loaning deals to solve 3 problems:
 - **Probalem 1:** Use Google Geocoding API to get City and State names based on Zip Code.
 - **Probalem 2:** Classify top 3 lenders who are most likely to provide the loan.
   - Problem 2.1: Build a classification algorithm to predict lenders and their probabilities
-  - Problem 2.2: Build a web application that uses the algorithm to predict lenders based on user inputs
+  - Problem 2.2: Build a [web application](https://find-lenders.herokuapp.com/) that uses the algorithm to predict lenders based on user inputs
 - **Probalem 3:** Find the variables that correlate with higher interest rate.
 
 ## 2. Dataset
@@ -78,7 +78,7 @@ The code was developed using the Anaconda distribution of Python version 3.6. Th
 `requests` <br>
 `pickle` <br>
 
-## 6. Results and screen shots
+## 6. Results and screenshots
 
 - **Problem 1:** Retrieve city and state based on zip code
 
@@ -86,13 +86,12 @@ The code was developed using the Anaconda distribution of Python version 3.6. Th
 
 - **Problem 2:** Classify top 3 most likely lenders
 
-    - Homepage
-
-        <img src="resources/part2_home.png" width=600>
-
-    - Classification result page
-
-        <img src="resources/part2_results.png" width=600>
+    - Classifier that predicts top 3 lenders and their probabilities: see `part2.ipynb`
+    - [Web app](https://find-lenders.herokuapp.com/)
+      - Homepage
+          <img src="resources/part2_home.png" width=600>
+      - Classification result
+          <img src="resources/part2_results.png" width=600>
 
 - **Problem 3:** Identify variables that correlate with high interest rate
 
