@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+{% block title %}Results{% endblock %}
+
+{% block message %}
+    <hr>
+    <h4 class="text-center">Top 3 lenders who are most likely to provide a loan</h4>
+    <!-- <p class="text-center"><i>{{query}}</i></p> -->
+{% endblock %}
+
+{% block content %}
+    <ul class="list-group">
+        {% for lender in top3_lenders %}
+            <li class="list-group-item list-group-item-success text-center">{{ lender }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
