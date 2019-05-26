@@ -16,119 +16,132 @@
     <!-- D3 JS -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
 
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="navbar-container container-fluid">
+    <div id="page-container">
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg  bg-light"> <!--navbar-light-->
+            <div class="navbar-container container-fluid">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('index') }}">Find the best lenders <span class="sr-only">(current)</span></a>
-                </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item inactive align-right">
-                    <a class="nav-link" href="https://github.com/angang-li/find_lenders"><i class="fab fa-github fa-lg"></i><span> Github</span></a>
-                </li>
-                </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('index') }}">Find the best lenders <span class="sr-only">(current)</span></a>
+                    </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item inactive align-right">
+                        <a class="nav-link" href="https://github.com/angang-li/find_lenders"><i class="fab fa-github fa-lg"></i><span> Github</span></a>
+                    </li>
+                    </ul>
+                </div>
+            
             </div>
-        
+        </nav>
+
+        <!-- Content -->
+        <div class="content-container container">
+            <div>
+                <h4 class="text-center">Find the best lenders</h4>
+            </div>
+
+            <form action="{{ url_for('go') }}" method="post">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3 form-item">
+                        <label for="validationServer03">City</label>
+                        <input type="text" class="form-control" id="cityEntry" name="cityEntry" placeholder="City" required>
+                        <div class="invalid-feedback">
+                        Please enter a city.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3 form-item">
+                        <label for="validationServer04">State</label>
+                        <select class="form-control" id="stateDropdown" name="stateDropdown" required>
+                            <option value="">Choose a State</option>
+                        </select>
+                        <div class="invalid-feedback">
+                        Please choose a state.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3 form-item">
+                        <label for="validationServer04">Multifamily Subtype</label>
+                        <select multiple class="form-control" id="mfDropdown" name="mfDropdown" required>
+                            <!-- <option value="">Choose a type</option> -->
+                        </select>
+                        <div class="invalid-feedback">
+                        Please choose a multifamily type.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 form-item">
+                        <label for="validationServer03">Year Built</label>
+                        <input type="text" class="form-control" id="yearBuilt" name="yearBuilt" placeholder="e.g. 1990" required>
+                        <div class="invalid-feedback">
+                        Please enter the year built.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 form-item">
+                        <label for="validationServer03">Number of Units</label>
+                        <input type="text" class="form-control" id="numberUnits" name="numberUnits" placeholder="e.g. 24" required>
+                        <div class="invalid-feedback">
+                        Please enter the number of units.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3 form-item">
+                        <label for="validationServer03">Original Loan</label>
+                        <input type="text" class="form-control" id="originalLoan" name="originalLoan" placeholder="e.g. 1,720,000" required>
+                        <div class="invalid-feedback">
+                        Please enter the amount of original loan.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3 form-item">
+                        <label for="validationServer03">Interest Rate (%)</label>
+                        <input type="text" class="form-control" id="noteRate" name="noteRate" placeholder="e.g. 5.8" required>
+                        <div class="invalid-feedback">
+                        Please enter the rate.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3 form-item">
+                        <label for="validationServer03">Loan Term (Days)</label>
+                        <input type="text" class="form-control" id="loanTerm" name="loanTerm" placeholder="e.g. 180" required>
+                        <div class="invalid-feedback">
+                        Please enter the loan term.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3 form-item">
+                        <label for="validationServer03">Appraised Value</label>
+                        <input type="text" class="form-control" id="appraisedValue" name="appraisedValue" placeholder="e.g. 3,500,000" required>
+                        <div class="invalid-feedback">
+                        Please enter the appraised value.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-item center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </nav>
 
-    <!-- Content -->
-    <div class="content-container container">
-        <form action="{{ url_for('go') }}" method="post">
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationServer03">City</label>
-                    <input type="text" class="form-control" id="cityEntry" name="cityEntry" placeholder="City" required>
-                    <div class="invalid-feedback">
-                    Please enter a city.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="validationServer04">State</label>
-                    <select class="form-control" id="stateDropdown" name="stateDropdown" required>
-                        <option value="">Choose a State</option>
-                    </select>
-                    <div class="invalid-feedback">
-                    Please choose a state.
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer04">Multifamily Subtype</label>
-                    <select multiple class="form-control" id="mfDropdown" name="mfDropdown" required>
-                        <!-- <option value="">Choose a type</option> -->
-                    </select>
-                    <div class="invalid-feedback">
-                    Please choose a multifamily type.
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer03">Year Built</label>
-                    <input type="text" class="form-control" id="yearBuilt" name="yearBuilt" placeholder="e.g. 1990" required>
-                    <div class="invalid-feedback">
-                    Please enter the year built.
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer03">Number of Units</label>
-                    <input type="text" class="form-control" id="numberUnits" name="numberUnits" placeholder="e.g. 24" required>
-                    <div class="invalid-feedback">
-                    Please enter the number of units.
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationServer03">Original Loan</label>
-                    <input type="text" class="form-control" id="originalLoan" name="originalLoan" placeholder="e.g. 1,720,000" required>
-                    <div class="invalid-feedback">
-                    Please enter the amount of original loan.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="validationServer03">Interest Rate (%)</label>
-                    <input type="text" class="form-control" id="noteRate" name="noteRate" placeholder="e.g. 5.8" required>
-                    <div class="invalid-feedback">
-                    Please enter the rate.
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationServer03">Loan Term (Days)</label>
-                    <input type="text" class="form-control" id="loanTerm" name="loanTerm" placeholder="e.g. 180" required>
-                    <div class="invalid-feedback">
-                    Please enter the loan term.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="validationServer03">Appraised Value</label>
-                    <input type="text" class="form-control" id="appraisedValue" name="appraisedValue" placeholder="e.g. 3,500,000" required>
-                    <div class="invalid-feedback">
-                    Please enter the appraised value.
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-
-        {% block message %}
-        {% endblock %}
-    </div>
-
-    <!-- Results -->
-    <div class="content-container container">
-        {% block content %}
-        {% endblock %}
+        <!-- Results -->
+        <div class="content-container container" id="content-wrap">
+            {% block message %}
+            {% endblock %}
+            
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
 
     <footer class="page-footer font-small unique-color-dark">
