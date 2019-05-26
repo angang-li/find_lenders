@@ -88,9 +88,9 @@ The code was developed using the Anaconda distribution of Python version 3.6. Th
 
     - Classifier that predicts top 3 lenders and their probabilities: see `part2.ipynb`
     - [Web app](https://find-lenders.herokuapp.com/)
-      - Homepage
+      - Homepage <br>
           <img src="resources/part2_home.png" width=600>
-      - Classification result
+      - Classification result <br>
           <img src="resources/part2_results.png" width=600>
 
 - **Problem 3:** Identify variables that correlate with high interest rate
